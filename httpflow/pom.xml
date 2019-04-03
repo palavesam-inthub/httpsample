@@ -12,13 +12,12 @@
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<app.runtime>4.1.4</app.runtime>
-		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.2.7</mule.maven.plugin.version>
 	</properties>
 
 	<build>
-		<plugins>
+  		<plugins>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -68,5 +67,4 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 </project>

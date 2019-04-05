@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f7d81a15-3508-43b9-9768-ed4d5aa9faba" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a73a0867-3a02-42f7-aa3f-5a5758cd863a" >
+		<http:request-connection host="httpflow.us-e2.cloudhub.io" port="8081" />
+	</http:request-config>
 	<flow name="httpflowFlow" doc:id="4bd6c181-2543-4b24-93e0-3d93734c57a4" >
 		<http:listener doc:name="Listener" doc:id="16f950ab-4580-40ac-bc99-385a5511c84e" config-ref="HTTP_Listener_config" path="/http"/>
 		<set-payload value="Sample HTTP Call" doc:name="Set Payload" doc:id="ccbb8ec7-acda-468f-96e9-bc6f8f59e393" />
+		<http:request method="GET" doc:name="Request" doc:id="8885db00-8bec-45b9-95b7-7ef8cfd45d42" config-ref="HTTP_Request_configuration"/>
 	</flow>
 </mule>

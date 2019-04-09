@@ -13,7 +13,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:request-config>
 	<flow name="httpflowFlow" doc:id="4bd6c181-2543-4b24-93e0-3d93734c57a4" >
 		<http:listener doc:name="Listener" doc:id="16f950ab-4580-40ac-bc99-385a5511c84e" config-ref="HTTP_Listener_config" path="/http"/>
-		<set-payload value="Sample HTTP Call" doc:name="Set Payload" doc:id="ccbb8ec7-acda-468f-96e9-bc6f8f59e393" />
-		<http:request method="GET" doc:name="Request" doc:id="8885db00-8bec-45b9-95b7-7ef8cfd45d42" config-ref="HTTP_Request_configuration"/>
+		<set-payload value="Sample HTTP  Call" doc:name="Set Payload" doc:id="ccbb8ec7-acda-468f-96e9-bc6f8f59e393" />
 	</flow>
 </mule>

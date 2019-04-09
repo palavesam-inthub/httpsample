@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="httpflow-test-suite.xml" />
+	<munit:test name="httpflow-test-suite-httpflowFlowTest" description="Test" doc:id="bd9d4413-2ef9-4bc6-94c8-9f4c322520a5" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to httpflowFlow" doc:id="5e8156e6-c208-4d2a-9500-7a456bee33d8" name="httpflowFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="acfa8741-e147-48b8-8567-a2940e7f77ca" expression="#[payload]" is="#[MunitTools::containsString('HTTP')]" message="Payload value does not contain HTTP"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

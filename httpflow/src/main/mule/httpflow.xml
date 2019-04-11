@@ -11,8 +11,23 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a73a0867-3a02-42f7-aa3f-5a5758cd863a" >
 		<http:request-connection host="httpflow.us-e2.cloudhub.io" port="8081" />
 	</http:request-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="ca526bc6-49d4-4e68-9d14-3d227b04cace" >
+		<http:request-connection host="api.us.apiconnect.ibmcloud.com/lakshmipriyainthubcomau-dev/sb/api/Plans/estimate?deposit=300&amp;rate=0.04&amp;years=10" protocol="HTTPS"/>
+	</http:request-config>
+	<http:request-config name="HTTP_Request_configuration2" doc:name="HTTP Request configuration" doc:id="ea7c410e-6719-41d0-9423-cb650894dc85" >
+		<http:request-connection protocol="HTTPS" host="api.us.apiconnect.ibmcloud.com" />
+	</http:request-config>
 	<flow name="httpflowFlow" doc:id="4bd6c181-2543-4b24-93e0-3d93734c57a4" >
 		<http:listener doc:name="Listener" doc:id="16f950ab-4580-40ac-bc99-385a5511c84e" config-ref="HTTP_Listener_config" path="/http"/>
-		<set-payload value="Sample HTTP  Call" doc:name="Set Payload" doc:id="ccbb8ec7-acda-468f-96e9-bc6f8f59e393" />
+		<set-payload value="Sample HTTP Request" doc:name="Set Payload" doc:id="ccbb8ec7-acda-468f-96e9-bc6f8f59e393" />
+		<http:request method="GET" doc:name="Request" doc:id="f9e02f97-557d-4f0c-a3cf-c25905e900a4" config-ref="HTTP_Request_configuration2" path="/lakshmipriyainthubcomau-dev/sb/api/Plans/estimate?deposit=300&amp;rate=0.04&amp;years=10">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"X-IBM-Client-Id" : "d70fa2d0-1c7e-4b35-8bb1-efbb9808aa22",
+	"X-IBM-Client-Secret" : "S3wP0wH2sC6aJ7uB7aQ0xR0wG8rM6qI5vG7yW5wR6dF3rH4vF5"
+}]]]></http:headers>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="9c0705a6-014a-4f1d-b96f-e6c34c108ef4" />
 	</flow>
 </mule>

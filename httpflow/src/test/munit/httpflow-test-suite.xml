@@ -13,7 +13,8 @@
 			<flow-ref doc:name="Flow-ref to httpflowFlow" doc:id="5e8156e6-c208-4d2a-9500-7a456bee33d8" name="httpflowFlow"/>
 		</munit:execution>
 		<munit:validation>
-			<munit-tools:assert-that doc:name="Assert that" doc:id="acfa8741-e147-48b8-8567-a2940e7f77ca" expression="#[payload]" is="#[MunitTools::containsString('HTTP')]" message="Payload value does not contain HTTP"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="8450661b-7774-4e29-8086-d0699a206444" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="HTTPSuccessResponse"/>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="f470e454-4bed-46cc-82e5-3cd8309c9e0d" expression="#[payload]" is="#[MunitTools::containsString('balance')]" message="HTTPResponseSuccess"/>
 		</munit:validation>
 	</munit:test>
 

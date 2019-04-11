@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="bf2ab6c7-29a3-4657-9f2f-4b0be4965485" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="cdb9ae33-1713-4d0f-8d49-367a68e78083" >
+		<http:request-connection protocol="HTTPS" host="api.us.apiconnect.ibmcloud.com" />
+	</http:request-config>
+	<flow name="sampleflowFlow" doc:id="496f21e6-1844-4308-8a59-5cb0b7567570" >
+		<http:listener doc:name="Listener" doc:id="d1ee24b7-c4e2-492e-a9dc-4e79f39694d8" config-ref="HTTP_Listener_config" path="/sample"/>
+		<http:request method="GET" doc:name="Request" doc:id="4d396b6a-b14d-44c1-8ade-19d240259a74" config-ref="HTTP_Request_configuration" path="/lakshmipriyainthubcomau-dev/sb/api/Plans/estimate?deposit=300&amp;rate=0.04&amp;years=10">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"X-IBM-Client-Id" : "d70fa2d0-1c7e-4b35-8bb1-efbb9808aa22",
+	"X-IBM-Client-Secret" : "S3wP0wH2sC6aJ7uB7aQ0xR0wG8rM6qI5vG7yW5wR6dF3rH4vF5"
+}]]]></http:headers>
+		</http:request>
+	</flow>
+</mule>

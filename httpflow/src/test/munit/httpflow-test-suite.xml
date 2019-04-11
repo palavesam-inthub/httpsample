@@ -9,9 +9,6 @@
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="httpflow-test-suite.xml" />
 	<munit:test name="httpflow-test-suite-httpflowFlowTest" description="Test" doc:id="bd9d4413-2ef9-4bc6-94c8-9f4c322520a5" >
-		<munit:execution >
-			<flow-ref doc:name="Flow-ref to httpflowFlow" doc:id="5e8156e6-c208-4d2a-9500-7a456bee33d8" name="httpflowFlow"/>
-		</munit:execution>
 		<munit:validation>
 			<munit-tools:assert-that doc:name="Assert that" doc:id="8450661b-7774-4e29-8086-d0699a206444" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="HTTPSuccessResponse"/>
 			<munit-tools:assert-that doc:name="Assert that" doc:id="f470e454-4bed-46cc-82e5-3cd8309c9e0d" expression="#[payload]" is="#[MunitTools::containsString('balance')]" message="HTTPResponseSuccess"/>
